@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Logging;
 using System.Text.Json;
+using Microsoft.Extensions.Logging;
 
 namespace TddGuard.DotNet;
 
@@ -22,8 +22,13 @@ public class TddGuardLogger : ITestLogger
     private readonly List<CapturedUnhandledError> _unhandledErrors = new();
     private string _storageDirectory = ".claude/tdd-guard/data";
 
+    private ILogger<TddGuardLogger> _logger = LoggerFactory
+        .Create(builder => builder.AddConsole().SetMinimumLevel(LogLevel.Trace))
+        .CreateLogger<TddGuardLogger>();
+    
     public void Initialize(TestLoggerEvents events, string testRunDirectory)
     {
+        _logger.LogInformation("Initializing. {testRunDirectory}", testRunDirectory);
         // Initialize storage directory from environment or config
         InitializeStorageDirectory(testRunDirectory);
         
@@ -35,20 +40,23 @@ public class TddGuardLogger : ITestLogger
 
     private void InitializeStorageDirectory(string testRunDirectory)
     {
+        var currentWorkDir = Directory.GetCurrentDirectory();
+        _logger.LogInformation("Current work dir: {currentWorkDir}", currentWorkDir);
+        
         // Check for TDD_GUARD_PROJECT_ROOT environment variable
         var projectRoot = Environment.GetEnvironmentVariable("TDD_GUARD_PROJECT_ROOT");
-        
+        _logger.LogInformation("projectRoot: {projectRoot}", projectRoot);
         if (!string.IsNullOrEmpty(projectRoot) && Path.IsPathRooted(projectRoot))
         {
             _storageDirectory = Path.Combine(projectRoot, ".claude", "tdd-guard", "data");
         }
-        else if (!string.IsNullOrEmpty(testRunDirectory))
+        else if (!string.IsNullOrEmpty(currentWorkDir))
         {
             // Find project root by looking for .git directory or .sln files
-            var foundProjectRoot = FindProjectRoot(testRunDirectory);
+            var foundProjectRoot = FindProjectRoot(currentWorkDir);
             _storageDirectory = Path.Combine(foundProjectRoot, ".claude", "tdd-guard", "data");
         }
-        
+        _logger.LogInformation("_storageDirectory: {_storageDirectory}", _storageDirectory);
         // Ensure storage directory exists
         Directory.CreateDirectory(_storageDirectory);
     }
@@ -59,27 +67,7 @@ public class TddGuardLogger : ITestLogger
         
         while (currentDir != null)
         {
-            // Look for .git directory (Git repository root) - highest priority
-            if (Directory.Exists(Path.Combine(currentDir.FullName, ".git")))
-            {
-                return currentDir.FullName;
-            }
-            
-            // Look for .sln files (Solution file indicating project root) - second priority
-            var slnFiles = Directory.GetFiles(currentDir.FullName, "*.sln");
-            if (slnFiles.Length > 0)
-            {
-                return currentDir.FullName;
-            }
-            
-            currentDir = currentDir.Parent;
-        }
-        
-        // If no .git or .sln found, try again looking for .claude directory
-        currentDir = new DirectoryInfo(startDirectory);
-        while (currentDir != null)
-        {
-            // Look for .claude directory (existing TDD Guard project) - lowest priority
+            // Look for .claude directory
             if (Directory.Exists(Path.Combine(currentDir.FullName, ".claude")))
             {
                 return currentDir.FullName;
@@ -87,8 +75,9 @@ public class TddGuardLogger : ITestLogger
             
             currentDir = currentDir.Parent;
         }
-        // Fallback to the original directory if no project root found
-        return startDirectory;
+        
+        // If no .claude found, we're out of luck.
+        throw new Exception("Could not find a .claude directory to log to.");
     }
 
     private void OnTestResult(object? sender, TestResultEventArgs e)
