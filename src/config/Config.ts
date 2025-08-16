@@ -8,7 +8,7 @@ const LINT_FILENAME = 'lint.json'
 const CONFIG_FILENAME = 'config.json'
 
 export class Config {
-  static readonly DEFAULT_DATA_DIR = '.claude/tdd-guard/data' as const
+  static readonly DEFAULT_DATA_DIR = 'C:/projects/TDDSample/.claude/tdd-guard/data' as const
 
   readonly dataDir: string
   readonly useSystemClaude: boolean

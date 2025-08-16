@@ -25,6 +25,8 @@ export async function run(
     validator: (context) => validator(context, modelClient),
   })
 }
+// const config = new Config()
+// console.dir(config);
 
 // Only run if this is the main module
 if (require.main === module) {
