@@ -14,7 +14,7 @@ export class ClaudeCli implements IModelClient {
   async ask(prompt: string): Promise<string> {
     const claudeBinary = this.config.useSystemClaude
       ? 'claude'
-      : `${process.env.HOME}/.claude/local/claude`
+      : join(process.cwd(), 'node_modules', '.bin', 'claude.cmd')
 
     const args = [
       '-',
@@ -35,6 +35,7 @@ export class ClaudeCli implements IModelClient {
       encoding: 'utf-8',
       timeout: 60000,
       input: prompt,
+      shell: true,
       cwd: claudeDir,
     })
 
