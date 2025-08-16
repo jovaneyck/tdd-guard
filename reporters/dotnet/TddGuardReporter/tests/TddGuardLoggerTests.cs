@@ -98,7 +98,7 @@ public class TddGuardLoggerTests : IDisposable
             false, false, null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         Assert.True(File.Exists(outputPath));
 
         var json = File.ReadAllText(outputPath);
@@ -141,7 +141,7 @@ public class TddGuardLoggerTests : IDisposable
             false, false, null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         var json = File.ReadAllText(outputPath);
         var result = JsonSerializer.Deserialize<CapturedTestRun>(json, new JsonSerializerOptions
         {
@@ -186,7 +186,7 @@ public class TddGuardLoggerTests : IDisposable
             false, false, null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         var json = File.ReadAllText(outputPath);
         var result = JsonSerializer.Deserialize<CapturedTestRun>(json, new JsonSerializerOptions
         {
@@ -216,7 +216,7 @@ public class TddGuardLoggerTests : IDisposable
             false, false, null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         var json = File.ReadAllText(outputPath);
         var result = JsonSerializer.Deserialize<CapturedTestRun>(json, new JsonSerializerOptions
         {
@@ -244,7 +244,7 @@ public class TddGuardLoggerTests : IDisposable
             null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         var json = File.ReadAllText(outputPath);
         var result = JsonSerializer.Deserialize<CapturedTestRun>(json, new JsonSerializerOptions
         {
@@ -280,7 +280,7 @@ public class TddGuardLoggerTests : IDisposable
             false, false, null, null, null, TimeSpan.Zero));
 
         // Assert
-        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "Tests.json");
+        var outputPath = Path.Combine(_tempDirectory, ".claude", "tdd-guard", "data", "test.json");
         var json = File.ReadAllText(outputPath);
         var result = JsonSerializer.Deserialize<CapturedTestRun>(json, new JsonSerializerOptions
         {

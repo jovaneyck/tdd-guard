@@ -156,7 +156,7 @@ public class TddGuardLogger : ITestLogger
         Directory.CreateDirectory(_storageDirectory);
 
         // Save as JSON (matching other reporters' format)
-        var outputPath = Path.Combine(_storageDirectory, "Tests.json");
+        var outputPath = Path.Combine(_storageDirectory, "test.json");
         var json = JsonSerializer.Serialize(capturedTestRun, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
