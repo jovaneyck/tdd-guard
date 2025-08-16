@@ -44,12 +44,51 @@ public class TddGuardLogger : ITestLogger
         }
         else if (!string.IsNullOrEmpty(testRunDirectory))
         {
-            // Use Tests run directory as fallback
-            _storageDirectory = Path.Combine(testRunDirectory, ".claude", "tdd-guard", "data");
+            // Find project root by looking for .git directory or .sln files
+            var foundProjectRoot = FindProjectRoot(testRunDirectory);
+            _storageDirectory = Path.Combine(foundProjectRoot, ".claude", "tdd-guard", "data");
         }
         
         // Ensure storage directory exists
         Directory.CreateDirectory(_storageDirectory);
+    }
+
+    private static string FindProjectRoot(string startDirectory)
+    {
+        var currentDir = new DirectoryInfo(startDirectory);
+        
+        while (currentDir != null)
+        {
+            // Look for .git directory (Git repository root) - highest priority
+            if (Directory.Exists(Path.Combine(currentDir.FullName, ".git")))
+            {
+                return currentDir.FullName;
+            }
+            
+            // Look for .sln files (Solution file indicating project root) - second priority
+            var slnFiles = Directory.GetFiles(currentDir.FullName, "*.sln");
+            if (slnFiles.Length > 0)
+            {
+                return currentDir.FullName;
+            }
+            
+            currentDir = currentDir.Parent;
+        }
+        
+        // If no .git or .sln found, try again looking for .claude directory
+        currentDir = new DirectoryInfo(startDirectory);
+        while (currentDir != null)
+        {
+            // Look for .claude directory (existing TDD Guard project) - lowest priority
+            if (Directory.Exists(Path.Combine(currentDir.FullName, ".claude")))
+            {
+                return currentDir.FullName;
+            }
+            
+            currentDir = currentDir.Parent;
+        }
+        // Fallback to the original directory if no project root found
+        return startDirectory;
     }
 
     private void OnTestResult(object? sender, TestResultEventArgs e)
