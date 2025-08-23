@@ -7,7 +7,7 @@ A .NET test logger for TDD Guard that captures test results and enforces Test-Dr
 - **Framework Agnostic**: Works with XUnit, MSTest, NUnit, and other .NET testing frameworks
 - **Automatic Integration**: No code changes required - just add the logger to your test runs
 - **TDD Validation**: Captures detailed test results for TDD Guard's AI-powered validation
-- **Error Details**: Captures assertion failures, stack traces, and compilation errors
+- **Error Details**: Captures assertion failures, stack traces
 
 ## Installation
 
@@ -96,9 +96,8 @@ When using with TDD Guard (Claude Code hooks), the logger automatically:
 
 1. Captures all test results (passed, failed, skipped)
 2. Records assertion failures with detailed error messages
-3. Handles compilation errors and import failures
-4. Groups tests by class/module for organized reporting
-5. Saves results in JSON format for TDD Guard validation
+3. Groups tests by class/module for organized reporting
+4. Saves results in JSON format for TDD Guard validation
 
 ## Troubleshooting
 

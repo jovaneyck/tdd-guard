@@ -1,0 +1,176 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardWrapper\\tests\\TddGuard.Dotnet.TestWrapper.IntegrationTests.csproj": {}
+  },
+  "projects": {
+    "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\TddGuard.Dotnet.testlogger.csproj": {
+      "version": "0.1.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\TddGuard.Dotnet.testlogger.csproj",
+        "projectName": "TddGuard.Dotnet.testlogger",
+        "projectPath": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\TddGuard.Dotnet.testlogger.csproj",
+        "packagesPath": "C:\\Users\\Jo.VanEyck\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jo.VanEyck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Logging.Console": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.TestPlatform.ObjectModel": {
+              "target": "Package",
+              "version": "[17.14.1, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardWrapper\\tests\\TddGuard.Dotnet.TestWrapper.IntegrationTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardWrapper\\tests\\TddGuard.Dotnet.TestWrapper.IntegrationTests.csproj",
+        "projectName": "TddGuard.Dotnet.TestWrapper.IntegrationTests",
+        "projectPath": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardWrapper\\tests\\TddGuard.Dotnet.TestWrapper.IntegrationTests.csproj",
+        "packagesPath": "C:\\Users\\Jo.VanEyck\\.nuget\\packages\\",
+        "outputPath": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardWrapper\\tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Jo.VanEyck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\TddGuard.Dotnet.testlogger.csproj": {
+                "projectPath": "C:\\projects\\tdd-guard\\reporters\\dotnet\\TddGuardReporter\\src\\TddGuard.Dotnet.testlogger.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.12.0, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.4.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.109/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

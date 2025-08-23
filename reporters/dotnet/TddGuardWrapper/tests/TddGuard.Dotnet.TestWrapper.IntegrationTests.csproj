@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TddGuardReporter\src\TddGuard.Dotnet.testlogger.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Exclude broken project from build -->
+    <Compile Remove="fixtures\**\*.cs" />
+    <EmbeddedResource Remove="fixtures\**\*.cs" />
+    <None Remove="fixtures\**\*.cs" />
+  </ItemGroup>
+
+</Project>

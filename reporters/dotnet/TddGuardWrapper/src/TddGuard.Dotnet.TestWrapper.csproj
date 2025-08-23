@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>tdd-guard-dotnet-test</ToolCommandName>
+    <PackageId>TddGuard.Dotnet.TestWrapper</PackageId>
+    <Title>TDD Guard .NET Test Wrapper</Title>
+    <Version>0.1.0</Version>
+    <Authors>Jo Van Eyck</Authors>
+    <Description>.NET test wrapper for TDD Guard - handles compilation errors when dotnet test fails to build</Description>
+    <PackageProjectUrl>https://github.com/nizos/tdd-guard</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nizos/tdd-guard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>tdd;test-driven-development;testing;dotnet;claude</PackageTags>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>tdd-guard-dotnet-test</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.8" />
+    <PackageReference Include="System.Text.Json" Version="9.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TddGuardReporter\src\TddGuard.Dotnet.testlogger.csproj" />
+  </ItemGroup>
+
+
+
+</Project>
