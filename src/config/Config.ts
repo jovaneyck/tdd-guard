@@ -8,7 +8,8 @@ const LINT_FILENAME = 'lint.json'
 const CONFIG_FILENAME = 'config.json'
 
 export class Config {
-  static readonly DEFAULT_DATA_DIR = 'C:/projects/TDDSample/.claude/tdd-guard/data' as const
+  // static readonly DEFAULT_DATA_DIR = 'C:/projects/TDDSample/.claude/tdd-guard/data' as const
+  static readonly DEFAULT_DATA_DIR = 'C:/projects/eShopOnWeb/.claude/tdd-guard/data' as const
 
   readonly dataDir: string
   readonly useSystemClaude: boolean
@@ -27,16 +28,17 @@ export class Config {
   }
 
   private getDataDir(options?: ConfigOptions): string {
+    return Config.DEFAULT_DATA_DIR;
     // Determine the base directory
-    const baseDir = options?.projectRoot ?? this.getValidatedClaudeProjectDir()
+    // const baseDir = options?.projectRoot ?? this.getValidatedClaudeProjectDir()
 
-    // If we have a base directory, construct the full path
-    if (baseDir) {
-      return path.join(baseDir, ...Config.DEFAULT_DATA_DIR.split('/'))
-    }
+    // // If we have a base directory, construct the full path
+    // if (baseDir) {
+    //   return path.join(baseDir, ...Config.DEFAULT_DATA_DIR.split('/'))
+    // }
 
-    // Default to relative path
-    return Config.DEFAULT_DATA_DIR
+    // // Default to relative path
+    // return Config.DEFAULT_DATA_DIR
   }
 
   private getUseSystemClaude(options?: ConfigOptions): boolean {
