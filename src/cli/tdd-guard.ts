@@ -8,6 +8,7 @@ import { validator } from '../validation/validator'
 import { Config } from '../config/Config'
 import { ModelClientProvider } from '../providers/ModelClientProvider'
 import { ValidationResult } from '../contracts/types/ValidationResult'
+import { logToFile } from '../utils/logger'
 
 export async function run(
   input: string,
@@ -39,9 +40,22 @@ if (require.main === module) {
 
   process.stdin.on('end', async () => {
     try {
+      // Log the input data
+      logToFile(inputData, 'INPUT')
+
       const result = await run(inputData)
-      console.log(JSON.stringify(result))
+      const outputData = JSON.stringify(result)
+
+      // Log the output data
+      logToFile(outputData, 'OUTPUT')
+
+      console.log(outputData)
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
+
+      // Log the error
+      logToFile(`Failed to parse hook data: ${errorMessage}`, 'ERROR')
+
       console.error('Failed to parse hook data:', error)
     } finally {
       process.exit(0)

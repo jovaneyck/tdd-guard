@@ -3,6 +3,7 @@ import { Context } from '../contracts/types/Context'
 import { IModelClient } from '../contracts/types/ModelClient'
 import { ClaudeCli } from './models/ClaudeCli'
 import { generateDynamicContext } from './context/context'
+import { logToFile } from '../utils/logger'
 
 interface ModelResponseJson {
   decision: 'block' | 'approve' | null
@@ -15,11 +16,23 @@ export async function validator(
 ): Promise<ValidationResult> {
   try {
     const prompt = generateDynamicContext(context)
+
+    // Log the request to the model
+    logToFile(prompt, 'MODEL_REQUEST')
+
     const response = await modelClient.ask(prompt)
+
+    // Log the response from the model
+    logToFile(response || 'No response received', 'MODEL_RESPONSE')
+
     return parseModelResponse(response)
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : 'Unknown error'
+
+    // Log the error
+    logToFile(`Error during model interaction: ${errorMessage}`, 'MODEL_ERROR')
+
     const reason =
       errorMessage === 'No response from model'
         ? 'No response from model, try again'

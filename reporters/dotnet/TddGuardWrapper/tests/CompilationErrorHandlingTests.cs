@@ -68,12 +68,13 @@ public class CompilationErrorHandlingTests
         test.Errors.Should().NotBeNull().And.HaveCount(1);
         
         var error = test.Errors![0];
-        error.Name.Should().Be("CompilationError");
         error.Message.Should().NotBeNullOrEmpty("should contain compilation error details");
         
         // Verify error message contains expected compilation error patterns
         error.Message.Should().MatchRegex(@"(error CS\d+|Build FAILED|Error\(s\))", 
             "error message should contain compilation error indicators");
+        
+        jsonContent.Should().NotContain("stack", "tdd-guard does not like explicit nulls in JSON.");
     }
     
     [Fact]

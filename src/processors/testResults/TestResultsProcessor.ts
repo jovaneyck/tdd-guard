@@ -5,6 +5,7 @@ import {
   isPassingTest,
 } from '../../contracts/schemas/reporterSchemas'
 import { PytestResultSchema } from '../../contracts/schemas/pytestSchemas'
+import { logToFile } from '../../utils/logger'
 
 export class TestResultsProcessor {
   process(jsonData: string, framework: 'vitest' | 'pytest' = 'vitest'): string {
@@ -218,6 +219,8 @@ export class TestResultsProcessor {
       framework === 'pytest' ? PytestResultSchema : VitestTestResultSchema
     const result = schema.safeParse(parsed.data)
     if (!result.success) {
+      // Log the validation failure
+      logToFile(`Invalid test result format for framework ${framework}: ${JSON.stringify(result)}. DATA: ${JSON.stringify(parsed.data)}.`, 'ERROR')
       return { success: false, error: this.getValidationError(parsed.data) }
     }
 

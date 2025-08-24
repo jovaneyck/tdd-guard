@@ -12,7 +12,7 @@ A .NET test wrapper that forwards all arguments to `dotnet test` while ensuring 
 ## Installation
 
 ```bash
-dotnet pack
+dotnet tool uninstall --global TddGuard.Dotnet.TestWrapper
 dotnet tool install --global --add-source ./src/bin/Debug/ TddGuard.Dotnet.TestWrapper
 ```
 

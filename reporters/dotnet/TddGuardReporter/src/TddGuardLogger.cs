@@ -99,7 +99,6 @@ public class TddGuardLogger : ITestLogger
                 {
                     Message = testResult.ErrorMessage,
                     Stack = testResult.ErrorStackTrace,
-                    Name = "AssertionError"
                 }
             ];
         }

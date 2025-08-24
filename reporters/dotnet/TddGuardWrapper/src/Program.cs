@@ -215,7 +215,6 @@ public class Program
                                     new CapturedError
                                     {
                                         Message = compilationError,
-                                        Name = "CompilationError"
                                     }
                                 }
                             }
