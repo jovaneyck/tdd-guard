@@ -49,6 +49,6 @@ You are reviewing an Edit operation where existing code is being modified. You m
 ### Example Analysis
 
 **Scenario**: Test fails with "Calculator is not defined"
-- Allowed: Add \`export class Calculator {}\`
+- Allowed: Add \`export class Calculator {add(a, b) { throw new System.NotImplementedException(); }}\`
 - Violation: Add \`export class Calculator { add(a, b) { return a + b; } }\`
-- **Reason**: Should only fix "not defined", not implement methods`
+- **Reason**: Should only fix compilation errors, not implement full features before seeing the test fail with a relevant assertion.`

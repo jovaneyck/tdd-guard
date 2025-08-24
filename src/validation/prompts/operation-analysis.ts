@@ -10,14 +10,14 @@ When reviewing edits, you must:
    - Moving or reformatting tests doesn't count as new
 
 2. **Count new tests accurately**
-   - Look for test blocks: \`test(\`, \`it(\`, \`describe(\`
+   - Look for test blocks: \`test(\`, \`it(\`, \`describe(\`, \`[Fact]\`, \`[Theory]\`
    - Count only tests that appear in new but not in old
    - One new test = allowed, Multiple new tests = violation
 
 3. **Check implementation changes**
    - Determine what the test failure indicates
    - Verify implementation matches the failure type
-   - Ensure minimal implementation principle
+   - Ensure minimal implementation principle. It is allowed to implement downstream changes without requiring a separate smaller TDD cycle.
 
 ### For Write Operations
 When reviewing new file creation:
@@ -28,7 +28,7 @@ When reviewing new file creation:
 
 2. **Implementation files**: Check context carefully
    - Need evidence of failing test
-   - Implementation must match test failure type
+   - Implementation must match test failure type directly or indirectly.
 
 ### Context Clues to Consider
 

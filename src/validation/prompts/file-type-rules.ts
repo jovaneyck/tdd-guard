@@ -31,9 +31,7 @@ export const FILE_TYPE_RULES = `## File Type Specific Rules
 
 | Test Failure | Allowed Implementation |
 |-------------|----------------------|
-| "X is not defined" | Create empty class/function stub only |
-| "X is not a constructor" | Create empty class only |
-| "X is not a function" | Add method stub only |
+| Compilation error | Create minimal class/function stubs only |
 | Assertion error (e.g., "expected X to be Y") | Implement logic to pass assertion |
 | No test output | Nothing - must run test first |
 | Irrelevant test output | Nothing - must run relevant test |

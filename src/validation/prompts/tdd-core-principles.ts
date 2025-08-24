@@ -20,6 +20,9 @@ The foundation of TDD is the Red-Green-Refactor cycle:
    - Applies to BOTH implementation and test code
    - No refactoring with failing tests - fix them first
 
+We apply "outside-in" TDD by writing high-level tests that describe the desired behavior of the system, then gradually refining the implementation to make those tests pass.
+We do NOT require recursive TDD cycles for every small change, it is okay to work on a single coarse unit test and implement multiple layers of the system.
+
 ### Core Violations
 
 1. **Multiple Test Addition**
@@ -40,7 +43,7 @@ The foundation of TDD is the Red-Green-Refactor cycle:
 Each step in TDD should address ONE specific issue:
 - Test fails "not defined" → Create empty stub/class only
 - Test fails "not a function" → Add method stub only  
-- Test fails with assertion → Implement minimal logic only
+- Test fails with assertion → Implement minimal logic only to make the test pass. Changes can span multiple files/classes/methods as long as they are deemed to move the implementation further along on getting the test to pass.
 
 ### General Information
 - Sometimes the test output shows as no tests have been run when a new test is failing due to a missing import or constructor. In such cases, allow the agent to create simple stubs. Ask them if they forgot to create a stub if they are stuck.
